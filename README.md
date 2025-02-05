@@ -16,7 +16,9 @@ This is a task management project to add task, view task, update task, delete ta
            2)virtualenv env
            3)env\Scripts\activate
            4)cd task
-           5)python manage.py runserver 
+           5)python manage.py runserver
+           6)pip install -r requirements.txt
+
    
    git clone https://github.com/Abhijeet-Deve/Task-management-project.git
 
