@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Task</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            font-size: 1.1em;
+        }
+        input, select {
+            margin-bottom: 10px;
+            padding: 8px;
+            width: 100%;
+            max-width: 300px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Update Task</h1>
+    <form method="POST">
+        {% csrf_token %}
+        
+        <label for="description">Description:</label><br>
+        <input type="text" id="description" name="description" value="{{ task.description }}" required><br>
+        
+        <label for="deadline">Deadline:</label><br>
+        <input type="text" id="deadline" name="deadline" value="{{ task.deadline|date:'Y-m-d' }}"><br>
+        
+        <label for="status">Status:</label><br>
+        <select name="status" id="status">
+            <option value="pending" {% if task.status == "pending" %}selected{% endif %}>Pending</option>
+            <option value="completed" {% if task.status == "completed" %}selected{% endif %}>Completed</option>
+        </select><br>
+        
+        <button type="submit">Update Task</button>
+    </form>
+</body>
+</html>
